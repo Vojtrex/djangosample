@@ -34,7 +34,7 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag django_test:latest 598479110370.dkr.ecr.eu-central-1.amazonaws.com/django_test:latest
+          docker image tag djangosample-web:latest docker_test:latest
 
       - name: Push Docker Image to AWS ECR
         run: |
