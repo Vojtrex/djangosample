@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker compose build -t django_test:latest .
+          docker compose build .
 
       - name: AWS ECR Login
         run: |
