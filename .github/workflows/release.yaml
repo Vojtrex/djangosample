@@ -32,11 +32,6 @@ jobs:
           aws-region: eu-central-1
           role-to-assume: arn:aws:iam::598479110370:role/github
 
-      - name: AWS ECR Login
-        run: |
-          echo ${{ secrets.AWS_PASSWORD }} | docker login --username ${{ secrets.AWS_USER }} --password-stdin 598479110370.dkr.ecr.eu-central-1.amazonaws.com
-          
-
       - name: Tag Docker Image
         run: |
           docker tag django_test:latest 598479110370.dkr.ecr.eu-central-1.amazonaws.com/django_test:latest
