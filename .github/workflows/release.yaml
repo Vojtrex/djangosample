@@ -21,9 +21,16 @@ jobs:
         run: |
           docker compose build
 
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::598479110370:oidc-provider/token.actions.githubusercontent.com
+          role-session-name: githubsession
+          aws-region: eu-central-1
+
       - name: AWS ECR Login
         run: |
-          echo 'o!S8u5$E' | docker login --username pulumi --password-stdin  598479110370.dkr.ecr.eu-central-1.amazonaws.com
+          echo ${{ secrets.AWS_PASSWORD }} | docker login --username ${{ secrets.AWS_USER }} --password-stdin 598479110370.dkr.ecr.eu-central-1.amazonaws.com
           
 
       - name: Tag Docker Image
