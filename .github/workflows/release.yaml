@@ -1,7 +1,9 @@
 name: Django Docker Build and AWS ECR Push
 
 on:
-  release:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
