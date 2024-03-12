@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -21,12 +25,12 @@ jobs:
         run: |
           docker compose build
 
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v3
+      - name: Configure AWS Credentials for China region audience
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::598479110370:oidc-provider/token.actions.githubusercontent.com
-          role-session-name: githubsession
+          audience: sts.amazonaws.com
           aws-region: eu-central-1
+          role-to-assume: arn:aws:iam::598479110370:oidc-provider/token.actions.githubusercontent.com
 
       - name: AWS ECR Login
         run: |
