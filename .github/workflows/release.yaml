@@ -44,4 +44,4 @@ jobs:
 
       - name: Push Docker Image to AWS ECR
         run: |
-          docker push 598479110370.dkr.ecr.eu-central-1.amazonaws.com/django_test-0150ebc:latest
+          docker push 598479110370.dkr.ecr.eu-central-1.amazonaws.com/django:latest
