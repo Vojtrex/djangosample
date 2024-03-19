@@ -4,4 +4,10 @@ services:
       context: app
       target: builder
     ports: 
-      - '8000:80'
+      - '8000:8000'
+    healthcheck:
+      test: curl -I --fail http://localhost/ || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_periodz: 5s
