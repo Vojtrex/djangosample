@@ -45,3 +45,7 @@ jobs:
       - name: Push Docker Image to AWS ECR
         run: |
           docker push 598479110370.dkr.ecr.eu-central-1.amazonaws.com/audiosystem:latest
+
+      - name: Force deployment
+        run: |
+          aws ecs update-service --cluster audiosystem_ecs_cluster-f233ac3 --service audiosystem_ecs_service-b4b8338 --force-new-deployment
